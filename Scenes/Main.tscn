@@ -105,11 +105,11 @@ adjustment_enabled = false
 adjustment_brightness = 1.0
 adjustment_contrast = 1.0
 adjustment_saturation = 1.0
-_sections_unfolded = [ "Background", "DOF Far Blur", "DOF Near Blur", "Fog", "SS Reflections" ]
+_sections_unfolded = [ "Background", "DOF Far Blur", "DOF Near Blur", "Fog", "SS Reflections", "SSAO" ]
 
 [sub_resource type="BoxShape" id=3]
 
-extents = Vector3( 1, 1, 1 )
+extents = Vector3( 0.794761, 0.800693, 0.802901 )
 
 [sub_resource type="CapsuleShape" id=4]
 
@@ -128,7 +128,7 @@ environment = SubResource( 2 )
 
 [node name="Camera" type="Camera" parent="Spatial"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.88714, 1.48637 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.46604, -0.658533 )
 projection = 0
 fov = 65.0
 near = 0.1
@@ -143,8 +143,7 @@ doppler/tracking = 0
 
 [node name="Player" type="RigidBody" parent="Spatial"]
 
-editor/display_folded = true
-transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 15, -10 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.77871, -10 )
 input_ray_pickable = true
 input_capture_on_drag = false
 collision_layer = 1
@@ -170,6 +169,7 @@ _sections_unfolded = [ "Angular", "Collision", "Linear", "Transform", "Visibilit
 
 [node name="MeshInstance" type="MeshInstance" parent="Spatial/Player"]
 
+transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -186,8 +186,10 @@ _sections_unfolded = [ "Transform", "material" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="Spatial/Player"]
 
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
 shape = SubResource( 3 )
 disabled = false
+_sections_unfolded = [ "Transform" ]
 
 [node name="Pivot" type="StaticBody" parent="Spatial"]
 
@@ -233,9 +235,9 @@ input_capture_on_drag = false
 collision_layer = 1
 collision_mask = 1
 mode = 0
-mass = 50.0
-friction = 0.0
-bounce = 0.0
+mass = 75.0
+friction = 1.0
+bounce = 0.02
 gravity_scale = 1.0
 custom_integrator = false
 continuous_cd = false
