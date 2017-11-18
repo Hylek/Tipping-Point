@@ -1,6 +1,7 @@
 extends Node
 export (PackedScene) var Box
 onready var ref = load (Box.get_path())
+var box
 
 # class member variables go here, for example:
 # var a = 2
@@ -17,6 +18,6 @@ func _ready():
 #	pass
 
 func spawn_obstacle():
-	var box = ref.instance()
+	box = ref.instance()
 	get_parent().add_child(box)
 	box.translate(Vector3((randf() * 8) - 4,3,0))

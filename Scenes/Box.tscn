@@ -57,4 +57,13 @@ shape = SubResource( 1 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
 
+[node name="DestroyTimer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="DestroyTimer" to="." method="destroy"]
+
 

@@ -9,7 +9,7 @@ func _ready():
 
 func _process(delta):
 	var mousePos = get_global_mouse_position()
-	print(mousePos)
+	#print(mousePos)
 	var passedVar = get_parent().get("isMenuVisible")
 	if(passedVar):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
