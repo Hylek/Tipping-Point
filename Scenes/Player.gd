@@ -12,6 +12,8 @@ const MAX_SPEED = 800
 const JUMP_FORCE = 1150
 
 var direction = 0
+var impulse = Vector3(-1,0,0)
+var postest = Vector3(0,0,0)
 var input_direction = 0
 var velocity = Vector2(0, 0)
 var grounded = false
@@ -34,7 +36,7 @@ func _process(delta):
 		velocity.x += ACCELERATION * direction * delta
 		velocity.x = clamp(velocity.x, -MAX_SPEED, MAX_SPEED)
 		
-
+	#apply_impulse(postest, impulse)
 	
 	
 	
