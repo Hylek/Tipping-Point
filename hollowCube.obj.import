@@ -1,0 +1,12 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/hollowCube.obj-d31b6d4b5958cd72247e82dbe7718503.mesh"
+
+[gen]
+files=[ "res://.import/hollowCube.obj-d31b6d4b5958cd72247e82dbe7718503.mesh" ]
+
+[params]
+
+generate_tangents=true
