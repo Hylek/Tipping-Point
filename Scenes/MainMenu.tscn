@@ -7,10 +7,6 @@
 
 script = null
 
-[node name="Spatial" parent="."]
-
-editor/display_folded = true
-
 [node name="Player" parent="Spatial"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.38225, -10 )
@@ -36,6 +32,7 @@ disabled = true
 
 [node name="Menu" parent="."]
 
+editor/display_folded = true
 visible = false
 
 [node name="Crosshair" parent="."]
@@ -45,6 +42,7 @@ script = null
 
 [node name="MainMenu" type="VBoxContainer" parent="."]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
