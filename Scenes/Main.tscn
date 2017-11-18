@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scenes/Main.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Player.gd" type="Script" id=2]
@@ -6,8 +6,10 @@
 [ext_resource path="res://cylinder.obj" type="ArrayMesh" id=4]
 [ext_resource path="res://Scenes/Platform.gd" type="Script" id=5]
 [ext_resource path="res://defaultCube.obj" type="ArrayMesh" id=6]
-[ext_resource path="res://Scenes/Crosshair.gd" type="Script" id=7]
-[ext_resource path="res://icon.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/Spawner.gd" type="Script" id=7]
+[ext_resource path="res://Scenes/Box.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Crosshair.gd" type="Script" id=9]
+[ext_resource path="res://icon.png" type="Texture" id=10]
 
 [sub_resource type="ProceduralSky" id=1]
 
@@ -233,6 +235,7 @@ material/0 = null
 
 [node name="Platform" type="RigidBody" parent="Spatial"]
 
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51162, -10 )
 input_ray_pickable = true
 input_capture_on_drag = false
@@ -295,6 +298,18 @@ motor/enable = false
 motor/target_velocity = 1.0
 motor/max_impulse = 1.0
 _sections_unfolded = [ "angular_limit", "collision", "motor", "nodes", "params", "solver" ]
+
+[node name="Spawner" type="Node" parent="Spatial"]
+
+script = ExtResource( 7 )
+Box = ExtResource( 8 )
+
+[node name="Timer" type="Timer" parent="Spatial/Spawner"]
+
+process_mode = 1
+wait_time = 2.0
+one_shot = false
+autostart = true
 
 [node name="Menu" type="Control" parent="."]
 
@@ -373,12 +388,15 @@ flat = false
 
 [node name="Crosshair" type="Node2D" parent="."]
 
-script = ExtResource( 7 )
+editor/display_folded = true
+script = ExtResource( 9 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="sprite" type="Sprite" parent="Crosshair"]
 
-texture = ExtResource( 8 )
+texture = ExtResource( 10 )
+
+[connection signal="timeout" from="Spatial/Spawner/Timer" to="Spatial/Spawner" method="spawn_obstacle"]
 
 [connection signal="button_down" from="Menu/Panel/Button" to="." method="_on_Button_button_down"]
 
