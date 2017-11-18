@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://playercube.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://cylinder.obj" type="ArrayMesh" id=2]
 
 [sub_resource type="ProceduralSky" id=1]
 
@@ -103,6 +104,15 @@ adjustment_contrast = 1.0
 adjustment_saturation = 1.0
 _sections_unfolded = [ "Background", "DOF Far Blur", "DOF Near Blur" ]
 
+[sub_resource type="BoxShape" id=3]
+
+extents = Vector3( 1, 1, 1 )
+
+[sub_resource type="CapsuleShape" id=4]
+
+radius = 1.0
+height = 1.0
+
 [node name="WorldEnvironment" type="WorldEnvironment"]
 
 environment = SubResource( 2 )
@@ -123,14 +133,15 @@ h_offset = 0.0
 v_offset = 0.0
 doppler/tracking = 0
 
-[node name="RigidBody" type="RigidBody" parent="Spatial"]
+[node name="Player" type="RigidBody" parent="Spatial"]
 
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.82199, -8.50557 )
 input_ray_pickable = true
 input_capture_on_drag = false
 collision_layer = 1
 collision_mask = 1
-mode = 2
+mode = 0
 mass = 1.0
 friction = 1.0
 bounce = 0.0
@@ -148,7 +159,7 @@ angular_velocity = Vector3( 0, 0, 0 )
 angular_damp = -1.0
 _sections_unfolded = [ "Angular", "Collision", "Linear", "Transform", "Visibility" ]
 
-[node name="MeshInstance" type="MeshInstance" parent="Spatial/RigidBody"]
+[node name="MeshInstance" type="MeshInstance" parent="Spatial/Player"]
 
 layers = 1
 material_override = null
@@ -163,5 +174,42 @@ mesh = ExtResource( 1 )
 skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "Transform", "material" ]
+
+[node name="CollisionShape" type="CollisionShape" parent="Spatial/Player"]
+
+shape = SubResource( 3 )
+disabled = false
+
+[node name="StaticBody" type="StaticBody" parent="Spatial"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.70264, 0, -8.22223 )
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+friction = 1.0
+bounce = 0.0
+constant_linear_velocity = Vector3( 0, 0, 0 )
+constant_angular_velocity = Vector3( 0, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Spatial/StaticBody"]
+
+shape = SubResource( 4 )
+disabled = false
+
+[node name="MeshInstance" type="MeshInstance" parent="Spatial/StaticBody"]
+
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 2 )
+skeleton = NodePath("..")
+material/0 = null
 
 
