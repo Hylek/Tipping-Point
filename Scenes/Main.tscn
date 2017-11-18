@@ -35,14 +35,14 @@ background_sky_custom_fov = 0.0
 background_color = Color( 0, 0, 0, 1 )
 background_energy = 1.0
 background_canvas_max_layer = 0
-ambient_light_color = Color( 0.757812, 0.677887, 0.677887, 1 )
+ambient_light_color = Color( 0.632812, 0.556183, 0.556183, 1 )
 ambient_light_energy = 1.02
 ambient_light_sky_contribution = 1.0
-fog_enabled = true
+fog_enabled = false
 fog_color = Color( 0.5, 0.6, 0.7, 1 )
 fog_sun_color = Color( 1, 0.9, 0.7, 1 )
 fog_sun_amount = 0.0
-fog_depth_enabled = true
+fog_depth_enabled = false
 fog_depth_begin = 10.0
 fog_depth_curve = 1.0
 fog_transmit_enabled = false
@@ -54,8 +54,8 @@ fog_height_curve = 1.0
 tonemap_mode = 0
 tonemap_exposure = 1.0
 tonemap_white = 1.0
-auto_exposure_enabled = false
-auto_exposure_scale = 0.4
+auto_exposure_enabled = true
+auto_exposure_scale = 2.5
 auto_exposure_min_luma = 0.05
 auto_exposure_max_luma = 8.0
 auto_exposure_speed = 0.5
@@ -69,15 +69,15 @@ ssao_enabled = true
 ssao_radius = 1.0
 ssao_intensity = 1.0
 ssao_radius2 = 0.0
-ssao_intensity2 = 1.0
-ssao_bias = 0.01
-ssao_light_affect = 0.0
+ssao_intensity2 = 0.0
+ssao_bias = 0.3
+ssao_light_affect = 1.0
 ssao_color = Color( 0, 0, 0, 1 )
 ssao_quality = 2
-ssao_blur = 3
+ssao_blur = 0
 ssao_edge_sharpness = 6.0
 dof_blur_far_enabled = false
-dof_blur_far_distance = 500.0
+dof_blur_far_distance = 1.0
 dof_blur_far_transition = 5.0
 dof_blur_far_amount = 0.1
 dof_blur_far_quality = 2
@@ -94,18 +94,18 @@ glow_levels/4 = false
 glow_levels/5 = true
 glow_levels/6 = false
 glow_levels/7 = false
-glow_intensity = 0.8
+glow_intensity = 1.0
 glow_strength = 1.0
 glow_bloom = 0.0
 glow_blend_mode = 2
 glow_hdr_threshold = 1.0
 glow_hdr_scale = 2.0
 glow_bicubic_upscale = false
-adjustment_enabled = false
+adjustment_enabled = true
 adjustment_brightness = 1.0
 adjustment_contrast = 1.0
-adjustment_saturation = 1.0
-_sections_unfolded = [ "Background", "DOF Far Blur", "DOF Near Blur", "Fog", "SS Reflections", "SSAO" ]
+adjustment_saturation = 2.0
+_sections_unfolded = [ "Auto Exposure", "Glow", "SS Reflections", "SSAO" ]
 
 [sub_resource type="BoxShape" id=3]
 
@@ -143,6 +143,7 @@ doppler/tracking = 0
 
 [node name="Player" type="RigidBody" parent="Spatial"]
 
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.77871, -10 )
 input_ray_pickable = true
 input_capture_on_drag = false
@@ -182,7 +183,7 @@ lod_max_hysteresis = 0.0
 mesh = ExtResource( 2 )
 skeleton = NodePath("..")
 material/0 = null
-_sections_unfolded = [ "Transform", "material" ]
+_sections_unfolded = [ "Geometry", "LOD", "Transform", "material" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="Spatial/Player"]
 
