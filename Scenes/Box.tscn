@@ -59,10 +59,12 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="DestroyTimer" type="Timer" parent="."]
 
+pause_mode = 1
 process_mode = 1
 wait_time = 10.0
 one_shot = true
 autostart = true
+_sections_unfolded = [ "Pause" ]
 
 [connection signal="timeout" from="DestroyTimer" to="." method="destroy"]
 

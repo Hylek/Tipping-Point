@@ -1,0 +1,162 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/Main.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/VBoxContainer.gd" type="Script" id=2]
+
+[node name="WorldEnvironment" instance=ExtResource( 1 )]
+
+script = null
+
+[node name="Spatial" parent="."]
+
+editor/display_folded = true
+
+[node name="Player" parent="Spatial"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.38225, -10 )
+visible = false
+
+[node name="Pivot" parent="Spatial"]
+
+editor/display_folded = false
+visible = false
+
+[node name="CollisionShape" parent="Spatial/Pivot"]
+
+disabled = true
+
+[node name="Platform" parent="Spatial"]
+
+editor/display_folded = false
+visible = false
+
+[node name="CollisionShape" parent="Spatial/Platform"]
+
+disabled = true
+
+[node name="Menu" parent="."]
+
+visible = false
+
+[node name="Crosshair" parent="."]
+
+visible = false
+script = null
+
+[node name="MainMenu" type="VBoxContainer" parent="."]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_constants/separation = 10
+alignment = 1
+script = ExtResource( 2 )
+_sections_unfolded = [ "Anchor", "custom_constants" ]
+
+[node name="StartButton" type="Button" parent="MainMenu"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 470.0
+margin_top = 245.0
+margin_right = 553.0
+margin_bottom = 265.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Start Game"
+flat = false
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="StartServerButton" type="Button" parent="MainMenu"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 469.0
+margin_top = 275.0
+margin_right = 554.0
+margin_bottom = 295.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Start Server"
+flat = false
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="ConnectButton" type="Button" parent="MainMenu"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 480.0
+margin_top = 305.0
+margin_right = 544.0
+margin_bottom = 325.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Connect"
+flat = false
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="QuitButton" type="Button" parent="MainMenu"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 471.0
+margin_top = 335.0
+margin_right = 553.0
+margin_bottom = 355.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Quit Game"
+flat = false
+_sections_unfolded = [ "Size Flags" ]
+
+[connection signal="pressed" from="MainMenu/StartButton" to="MainMenu" method="_on_StartButton_pressed"]
+
+[connection signal="pressed" from="MainMenu/StartServerButton" to="MainMenu" method="_on_StartServerButton_pressed"]
+
+[connection signal="pressed" from="MainMenu/ConnectButton" to="MainMenu" method="_on_ConnectButton_pressed"]
+
+[connection signal="pressed" from="MainMenu/QuitButton" to="MainMenu" method="_on_QuitButton_pressed"]
+
+

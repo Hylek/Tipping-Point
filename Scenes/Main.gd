@@ -24,8 +24,10 @@ func _handle_menu():
 		print(isMenuVisible)
 	if(isMenuVisible):
 		menu.visible = true
+		get_tree().set_pause(true)
 	else:
 		menu.visible = false
+		get_tree().set_pause(false)
 
 func _on_Button_button_down():
 	_create_server()
@@ -53,3 +55,5 @@ func _peer_connected(id):
 		return
 		
 	
+func _on_Button3_pressed():
+	get_tree().quit()

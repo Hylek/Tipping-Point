@@ -4,13 +4,6 @@ extends RigidBody
 # var a = 2
 # var b = "textvar"
 
-const GRAVITY = 3500
-const ACCELERATION = 5000
-const DECELERATION = 4000
-const FRICTION = 5
-const MAX_SPEED = 800
-const JUMP_FORCE = 1150
-
 var direction = 0
 var impulse = Vector3(0,0,0)
 var postest = Vector3(1,1,0)
@@ -31,11 +24,6 @@ func _process(delta):
 		impulse = Vector3(1, 0, 0)
 	else:
 		impulse = Vector3(0,0,0)
-	
-	if input_direction != 0: # If there is x-axis input
-		# Increase x-speed up to a maximum for both directions
-		velocity.x += ACCELERATION * direction * delta
-		velocity.x = clamp(velocity.x, -MAX_SPEED, MAX_SPEED)
 		
 	apply_impulse(postest, impulse)
 	
