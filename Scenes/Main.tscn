@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Scenes/Main.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Player.gd" type="Script" id=2]
@@ -12,9 +12,10 @@
 [ext_resource path="res://Scenes/Box.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Quicksand-Light.ttf" type="DynamicFontData" id=11]
 [ext_resource path="res://Scenes/Label.gd" type="Script" id=12]
-[ext_resource path="res://Scenes/Crosshair.gd" type="Script" id=13]
-[ext_resource path="res://Sprites/crosshair.png" type="Texture" id=14]
-[ext_resource path="res://music_drums.wav" type="AudioStream" id=15]
+[ext_resource path="res://Scenes/highscore.gd" type="Script" id=13]
+[ext_resource path="res://Scenes/Crosshair.gd" type="Script" id=14]
+[ext_resource path="res://Sprites/crosshair.png" type="Texture" id=15]
+[ext_resource path="res://music_drums.wav" type="AudioStream" id=16]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -95,11 +96,7 @@ use_filter = false
 font_data = ExtResource( 11 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
-<<<<<<< Updated upstream
-[sub_resource type="Theme" id=7]
-=======
 [sub_resource type="DynamicFont" id=10]
->>>>>>> Stashed changes
 
 size = 64
 use_mipmaps = false
@@ -125,7 +122,7 @@ _sections_unfolded = [ "Font", "Resource", "Settings" ]
 
 [sub_resource type="DynamicFont" id=8]
 
-size = 32
+size = 64
 use_mipmaps = false
 use_filter = false
 font_data = ExtResource( 11 )
@@ -133,7 +130,7 @@ _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=9]
 
-size = 32
+size = 64
 use_mipmaps = false
 use_filter = false
 font_data = ExtResource( 11 )
@@ -161,8 +158,8 @@ bounce = 0.2
 gravity_scale = 1.0
 custom_integrator = false
 continuous_cd = false
-contacts_reported = 1
-contact_monitor = true
+contacts_reported = 0
+contact_monitor = false
 sleeping = false
 can_sleep = true
 axis_lock = 0
@@ -429,6 +426,77 @@ max_lines_visible = -1
 script = ExtResource( 12 )
 _sections_unfolded = [ "custom_fonts" ]
 
+[node name="spacer" type="Label" parent="Overlay/VBoxContainer/HBoxContainer"]
+
+pause_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 221.0
+margin_right = 272.0
+margin_bottom = 80.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 6 )
+text = "   "
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="Label4" type="Label" parent="Overlay/VBoxContainer/HBoxContainer"]
+
+pause_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 276.0
+margin_right = 580.0
+margin_bottom = 80.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 5 )
+text = "Highscore:"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="Label3" type="Label" parent="Overlay/VBoxContainer/HBoxContainer"]
+
+pause_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 584.0
+margin_right = 622.0
+margin_bottom = 80.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 6 )
+text = "0"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+script = ExtResource( 13 )
+_sections_unfolded = [ "custom_fonts" ]
+
 [node name="Menu" type="Control" parent="."]
 
 pause_mode = 2
@@ -450,10 +518,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = -3.0
-margin_right = 5.0
-margin_bottom = -3.0
+margin_left = 6.0
+margin_top = -2.0
+margin_right = 6.0
+margin_bottom = -2.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -470,25 +538,6 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-<<<<<<< Updated upstream
-margin_left = 477.0
-margin_top = 262.0
-margin_right = 546.0
-margin_bottom = 282.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme = SubResource( 7 )
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-text = "Continue"
-flat = true
-_sections_unfolded = [ "Theme", "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]
-=======
 margin_top = 219.0
 margin_right = 1024.0
 margin_bottom = 299.0
@@ -499,7 +548,6 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 alignment = 1
 _sections_unfolded = [ "Pause" ]
->>>>>>> Stashed changes
 
 [node name="Label" type="Label" parent="Menu/VBoxContainer/HBoxContainer"]
 
@@ -508,12 +556,6 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-<<<<<<< Updated upstream
-margin_left = 427.0
-margin_top = 292.0
-margin_right = 596.0
-margin_bottom = 338.0
-=======
 margin_left = 339.0
 margin_right = 643.0
 margin_bottom = 80.0
@@ -562,7 +604,6 @@ margin_left = 379.0
 margin_top = 309.0
 margin_right = 645.0
 margin_bottom = 380.0
->>>>>>> Stashed changes
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -581,13 +622,13 @@ _sections_unfolded = [ "Pause", "custom_fonts" ]
 
 pause_mode = 2
 editor/display_folded = true
-script = ExtResource( 13 )
+script = ExtResource( 14 )
 _sections_unfolded = [ "Pause", "Transform" ]
 
 [node name="sprite" type="Sprite" parent="Crosshair"]
 
 scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 14 )
+texture = ExtResource( 15 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="GameOverMenu" type="Control" parent="."]
@@ -673,7 +714,7 @@ _sections_unfolded = [ "custom_fonts" ]
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 
-stream = ExtResource( 15 )
+stream = ExtResource( 16 )
 attenuation_model = 0
 unit_db = 0.0
 unit_size = 1.0
