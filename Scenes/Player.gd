@@ -70,6 +70,7 @@ func _handle_game_over():
 	get_parent().get_node("Spatial/Spawner").isSpawning = false
 	get_parent().get_node("GameOverMenu").visible = true
 	get_parent().get_node("Crosshair").visible = false
+	#set_mode(MODE_STATIC)
 	
 	if global.score >= global.highscore:
 		global.highscore = global.score
