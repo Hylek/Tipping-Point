@@ -3,7 +3,6 @@ extends RigidBody
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
-
 var direction = 0
 var impulse = Vector3(0,0,0)
 var postest = Vector3(1,1,0)
@@ -28,7 +27,15 @@ func _process(delta):
 		impulse = Vector3(0,0,0)
 	apply_impulse(postest, impulse)
 	
-	
+	get_parent().get_node("Crosshair").visible = false
+	get_parent().get_node("GameOverMenu").visible = true
+	get_parent().get_node("Spatial/Spawner").isSpawning = false
+	isDead = true
+func _handle_game_over():
+		
+		_handle_game_over()
+	if(pos.y <= -2):
+	var pos = transform.origin
 	
 	
 	
