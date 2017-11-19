@@ -15,3 +15,7 @@ func _on_StartServerButton_pressed():
 
 func _on_ConnectButton_pressed():
 	pass # replace with function body
+
+
+func _on_SlipButton_pressed():
+	get_tree().change_scene("res://Scenes/SlipnSlide.tscn")
