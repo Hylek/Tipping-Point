@@ -16,8 +16,9 @@ func _ready():
 	pass
 	
 func _process(delta):
-	_handle_menu()
+	#_handle_menu()
 	#_handle_crosshair()
+	pass
 		
 		
 func _handle_menu():
