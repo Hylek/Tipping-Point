@@ -73,7 +73,7 @@ func _handle_game_over():
 	
 func _handle_collisions():
 	var collisions = get_colliding_bodies()
-	#print("Get collision events for player")
+	print("Get collision events for player")
 	for i in collisions:
 		if i.is_in_group("hazard"):
 			

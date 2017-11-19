@@ -12,7 +12,9 @@ config_version=3
 
 config/name="Project-Wobble"
 run/main_scene="res://Scenes/MainMenu.tscn"
-config/icon="res://icon.png"
+boot_splash/image="res://ytho.png"
+boot_splash/fullsize=false
+config/icon="res://TippingPointIcon.png"
 
 [autoload]
 

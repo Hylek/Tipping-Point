@@ -151,8 +151,8 @@ input_capture_on_drag = false
 collision_layer = 1
 collision_mask = 1
 mode = 0
-mass = 25.0
-friction = 0.7
+mass = 10.0
+friction = 1.0
 bounce = 0.2
 gravity_scale = 1.0
 custom_integrator = false
@@ -202,6 +202,10 @@ autostart = false
 _sections_unfolded = [ "Pause" ]
 
 [node name="Spatial" type="Spatial" parent="."]
+
+editor/display_folded = true
+
+[node name="Cannon" parent="Spatial" instance=ExtResource( 4 )]
 
 [node name="Camera" type="Camera" parent="Spatial"]
 
@@ -330,6 +334,7 @@ Box = ExtResource( 9 )
 [node name="Overlay" type="Control" parent="."]
 
 pause_mode = 2
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -493,6 +498,7 @@ _sections_unfolded = [ "custom_fonts" ]
 [node name="Menu" type="Control" parent="."]
 
 pause_mode = 2
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -627,6 +633,7 @@ _sections_unfolded = [ "Transform" ]
 [node name="GameOverMenu" type="Control" parent="."]
 
 pause_mode = 2
+editor/display_folded = true
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
