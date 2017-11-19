@@ -61,9 +61,7 @@ _sections_unfolded = [ "Albedo" ]
 
 extents = Vector3( 1.25062, 1.25084, 1.24963 )
 
-[node name="Box" type="RigidBody" groups=[
-"hazard",
-]]
+[node name="Box" type="RigidBody"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -10 )
 input_ray_pickable = true
@@ -77,8 +75,8 @@ bounce = 1.0
 gravity_scale = 1.0
 custom_integrator = false
 continuous_cd = false
-contacts_reported = 1
-contact_monitor = true
+contacts_reported = 0
+contact_monitor = false
 sleeping = false
 can_sleep = true
 axis_lock = 0
