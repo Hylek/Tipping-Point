@@ -11,14 +11,10 @@ script = null
 
 visible = false
 mode = 1
-<<<<<<< refs/remotes/origin/Yizaksbranchdonotsteal
-script = null
-=======
 
 [node name="CollisionShape" parent="Player"]
 
 disabled = true
->>>>>>> Game Over state now triggers and functions correctly
 
 [node name="Cannon" parent="Spatial"]
 
@@ -42,13 +38,10 @@ disabled = true
 
 [node name="Spawner" parent="Spatial"]
 
-<<<<<<< refs/remotes/origin/Yizaksbranchdonotsteal
-=======
 editor/display_folded = true
 
 [node name="Menu" parent="."]
 
->>>>>>> Game Over state now triggers and functions correctly
 visible = false
 
 [node name="Crosshair" parent="."]
