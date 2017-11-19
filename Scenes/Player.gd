@@ -31,14 +31,14 @@ func _ready():
 
 func _process(delta):
 	if Input.is_action_pressed("ui_left"):
-		impulse = Vector3(-1, 0, 0)
+		impulse = Vector3(-mass/8, 0, 0)
 		if cycle > 4:
 			global.score += 1
 			cycle = 0
 		else:
 			cycle += 1
 	elif Input.is_action_pressed("ui_right"):
-		impulse = Vector3(1, 0, 0)
+		impulse = Vector3(mass/8, 0, 0)
 		if cycle > 10:
 			global.score += 1
 			cycle = 0
@@ -59,7 +59,7 @@ func _process(delta):
 	else:
 		cycle += 1
 		
-	if get_colliding_bodies().size():
+	if get_colliding_bodies().size() > 0:
 		_handle_collisions()
 
 func _handle_game_over():

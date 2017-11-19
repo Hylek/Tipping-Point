@@ -34,7 +34,7 @@ _sections_unfolded = [ "Angular", "Collision", "Linear", "Transform", "Visibilit
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 
-transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0 )
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -51,7 +51,7 @@ _sections_unfolded = [ "Geometry", "LOD", "Transform", "material" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 
-transform = Transform( 0.199614, 0, 0, 0, 0.199163, 0, 0, 0, 0.199299, 0, 0, 0 )
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0 )
 shape = SubResource( 1 )
 disabled = false
 _sections_unfolded = [ "Transform" ]

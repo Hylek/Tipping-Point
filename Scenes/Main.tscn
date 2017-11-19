@@ -96,6 +96,30 @@ use_filter = false
 font_data = ExtResource( 11 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
+[sub_resource type="DynamicFont" id=7]
+
+size = 64
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 11 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=8]
+
+size = 64
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 11 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=9]
+
+size = 52
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 11 )
+_sections_unfolded = [ "Font", "Resource", "Settings" ]
+
 [sub_resource type="DynamicFont" id=10]
 
 size = 64
@@ -112,30 +136,6 @@ use_filter = false
 font_data = ExtResource( 11 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="DynamicFont" id=7]
-
-size = 52
-use_mipmaps = false
-use_filter = false
-font_data = ExtResource( 11 )
-_sections_unfolded = [ "Font", "Resource", "Settings" ]
-
-[sub_resource type="DynamicFont" id=8]
-
-size = 64
-use_mipmaps = false
-use_filter = false
-font_data = ExtResource( 11 )
-_sections_unfolded = [ "Font", "Settings" ]
-
-[sub_resource type="DynamicFont" id=9]
-
-size = 64
-use_mipmaps = false
-use_filter = false
-font_data = ExtResource( 11 )
-_sections_unfolded = [ "Font", "Settings" ]
-
 [node name="WorldEnvironment" type="WorldEnvironment"]
 
 pause_mode = 2
@@ -145,15 +145,14 @@ _sections_unfolded = [ "Pause" ]
 
 [node name="Player" type="RigidBody" parent="."]
 
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -10 )
 input_ray_pickable = true
 input_capture_on_drag = false
 collision_layer = 1
 collision_mask = 1
 mode = 0
-mass = 10.0
-friction = 0.1
+mass = 25.0
+friction = 0.7
 bounce = 0.2
 gravity_scale = 1.0
 custom_integrator = false
@@ -266,7 +265,7 @@ collision_layer = 1
 collision_mask = 1
 mode = 0
 mass = 75.0
-friction = 0.1
+friction = 0.4
 bounce = 0.02
 gravity_scale = 1.0
 custom_integrator = false
@@ -560,7 +559,7 @@ rect_clip_content = false
 mouse_filter = 2
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 7 )
 text = "Highscore:"
 percent_visible = 1.0
 lines_skipped = 0
@@ -582,7 +581,7 @@ rect_clip_content = false
 mouse_filter = 2
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 8 )
 text = "0"
 percent_visible = 1.0
 lines_skipped = 0
@@ -605,7 +604,7 @@ rect_clip_content = false
 mouse_filter = 0
 size_flags_horizontal = 4
 size_flags_vertical = 0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 9 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -674,7 +673,7 @@ rect_clip_content = false
 mouse_filter = 0
 size_flags_horizontal = 4
 size_flags_vertical = 0
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 10 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -699,7 +698,7 @@ rect_clip_content = false
 mouse_filter = 0
 size_flags_horizontal = 4
 size_flags_vertical = 0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 11 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null

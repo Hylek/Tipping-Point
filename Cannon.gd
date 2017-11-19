@@ -16,7 +16,7 @@ func _ready():
 	# Initialization here
 	timer.connect("timeout",self,"cooldown_end")
 	timer.set_one_shot(true)
-	timer.set_wait_time(0.3)
+	timer.set_wait_time(0.25)
 	add_child(timer)
 
 func _process(delta):
