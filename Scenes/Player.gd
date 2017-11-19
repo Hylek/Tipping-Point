@@ -48,6 +48,9 @@ func _process(delta):
 		impulse = Vector3(0,0,0)
 	apply_impulse(postest, impulse)
 	
+	if global.isDead:
+		_handle_game_over()
+	
 	var pos = transform.origin
 	if(pos.y <= -2):
 		_handle_game_over()
