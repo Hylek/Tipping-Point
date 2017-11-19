@@ -4,12 +4,14 @@ const SERVER_PORT = 4321
 var ip = "127.0.0.1"
 var isMenuVisible = false
 onready var menu = $Menu
+onready var overlay = $Overlay
 onready var crosshair = get_node("Crosshair")
 onready var deathCheck = get_node("Spawner")
 
 func _ready():
-
+	overlay.visible = true
 	#get_node("Spatial/Player").translate(Vector3(5,1,1))
+	
 	set_process(true)
 	pass
 	
@@ -19,18 +21,24 @@ func _process(delta):
 		
 		
 func _handle_menu():
-	if(Input.is_action_just_released("ui_page_up")):
-		isMenuVisible = !isMenuVisible
-		print(isMenuVisible)
-	if(isMenuVisible):
-		menu.visible = true
-		get_tree().set_pause(true)
-	else:
-		menu.visible = false
-		get_tree().set_pause(false)
+	if !global.isDead:
+		if(Input.is_action_just_released("ui_page_up")):
+			isMenuVisible = !isMenuVisible
+			print(isMenuVisible)
+		if(isMenuVisible):
+			menu.visible = true
+			get_tree().set_pause(true)
+			global.paused = true
+		else:
+			menu.visible = false
+			get_tree().set_pause(false)
+			global.paused = false
 
 func _on_Button_button_down():
-	_create_server()
+		menu.visible = false
+		get_tree().set_pause(false)
+		global.paused = false
+		isMenuVisible = !isMenuVisible
 	
 func _create_server():
 	var host = NetworkedMultiplayerENet.new()
@@ -59,6 +67,6 @@ func _on_Button3_pressed():
 
 func _on_RestartButton_pressed():
 	get_tree().change_scene("res://Scenes/Main.tscn")
-	
-	
-	
+
+func _on_GOQuitButton_pressed():
+	get_tree().quit()

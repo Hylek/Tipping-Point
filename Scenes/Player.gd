@@ -10,12 +10,11 @@ var input_direction = 0
 var velocity = Vector2(0, 0)
 var grounded = false
 var deathEffect = Environment
-var isDead
 
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
-	isDead = false
+	global.isDead = false
 	get_parent().get_node("GameOverMenu").visible = false
 	set_axis_lock(3)
 	set_process(true)
@@ -32,23 +31,24 @@ func _process(delta):
 	var pos = transform.origin
 	if(pos.y <= -2):
 		_handle_game_over()
+	
+	if !global.isDead && !global.paused:
+		global.score += 1
+		
+	#if get_colliding_bodies().size():
+		#_handle_collisions()
 		
 func _handle_game_over():
-	isDead = true
+	global.isDead = true
 	get_parent().get_node("Spatial/Spawner").isSpawning = false
 	get_parent().get_node("GameOverMenu").visible = true
 	get_parent().get_node("Crosshair").visible = false
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
-	
+func _handle_collisions():
+	var collisions = get_colliding_bodies()
+	#print("Get collision events for player")
+	for i in collisions:
+		if i.is_in_group("hazard"):
+			#print("Box hit player!")
+			#get_node("MeshInstance").transform.scaled(Vector3(0.4, 0.2, 0.4))
+			pass

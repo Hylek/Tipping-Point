@@ -21,7 +21,7 @@ func spawn_obstacle():
 	if(isSpawning):
 		box = ref.instance()
 		get_parent().add_child(box)
-		box.translate(Vector3((randf() * 8) - 4,3,0))
+		box.translate(Vector3((randf() * 8) - 4,3,0.5))
 		var mat = SpatialMaterial
 		box.get_node("MeshInstance").set_surface_material(1, mat)
 		

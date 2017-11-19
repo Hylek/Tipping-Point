@@ -23,7 +23,7 @@ func _process(delta):
 #	# Called every frame. Delta is time since last frame.
 #	# Update game logic here.
 	if Input.is_mouse_button_pressed(BUTTON_LEFT):
-		if !cooldown && !get_parent().get_parent().get_node("Player").isDead:
+		if !cooldown && !global.isDead && !global.paused:
 			fire()
 			cooldown = true
 			timer.start()

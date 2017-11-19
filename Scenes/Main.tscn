@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Scenes/Main.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Player.gd" type="Script" id=2]
@@ -10,19 +10,22 @@
 [ext_resource path="res://defaultCube.obj" type="ArrayMesh" id=8]
 [ext_resource path="res://Scenes/Spawner.gd" type="Script" id=9]
 [ext_resource path="res://Scenes/Box.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Scenes/Crosshair.gd" type="Script" id=11]
-[ext_resource path="res://Sprites/crosshair.png" type="Texture" id=12]
+[ext_resource path="res://Quicksand-Light.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://Scenes/Label.gd" type="Script" id=12]
+[ext_resource path="res://Scenes/Crosshair.gd" type="Script" id=13]
+[ext_resource path="res://Sprites/crosshair.png" type="Texture" id=14]
+[ext_resource path="res://Networking.gd" type="Script" id=15]
 
-[sub_resource type="BoxShape" id=3]
+[sub_resource type="BoxShape" id=1]
 
 extents = Vector3( 0.794761, 0.800693, 0.802901 )
 
-[sub_resource type="CapsuleShape" id=4]
+[sub_resource type="CapsuleShape" id=2]
 
 radius = 1.12557
 height = 1.66232
 
-[sub_resource type="SpatialMaterial" id=6]
+[sub_resource type="SpatialMaterial" id=3]
 
 render_priority = 0
 flags_transparent = false
@@ -72,9 +75,52 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="BoxShape" id=5]
+[sub_resource type="BoxShape" id=4]
 
 extents = Vector3( 5.94553, 0.208362, 2.27677 )
+
+[sub_resource type="DynamicFont" id=6]
+
+size = 64
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 11 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=5]
+
+size = 64
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 11 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
+
+[sub_resource type="Theme" id=11]
+
+
+[sub_resource type="DynamicFont" id=8]
+
+size = 32
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 11 )
+_sections_unfolded = [ "Font", "Resource", "Settings" ]
+
+[sub_resource type="DynamicFont" id=9]
+
+size = 32
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 11 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=10]
+
+size = 32
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 11 )
+_sections_unfolded = [ "Font", "Settings" ]
 
 [node name="WorldEnvironment" type="WorldEnvironment"]
 
@@ -129,11 +175,13 @@ _sections_unfolded = [ "Geometry", "LOD", "Transform", "material" ]
 [node name="CollisionShape" type="CollisionShape" parent="Player"]
 
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 disabled = false
 _sections_unfolded = [ "Pause", "Transform", "Visibility" ]
 
 [node name="Spatial" type="Spatial" parent="."]
+
+editor/display_folded = true
 
 [node name="Cannon" parent="Spatial" instance=ExtResource( 4 )]
 
@@ -154,6 +202,7 @@ doppler/tracking = 0
 
 [node name="Pivot" type="StaticBody" parent="Spatial"]
 
+editor/display_folded = true
 transform = Transform( -0.015855, 0, 0.999874, 0, 1, 0, -0.999874, 0, -0.015855, 0, 0, -10 )
 input_ray_pickable = true
 input_capture_on_drag = false
@@ -168,7 +217,7 @@ _sections_unfolded = [ "Transform" ]
 [node name="CollisionShape" type="CollisionShape" parent="Spatial/Pivot"]
 
 transform = Transform( 0.00279839, 0, -0.999996, 0, 1, 0, 0.999996, 0, 0.00279839, 0, 0, 0 )
-shape = SubResource( 4 )
+shape = SubResource( 2 )
 disabled = false
 
 [node name="MeshInstance" type="MeshInstance" parent="Spatial/Pivot"]
@@ -184,11 +233,12 @@ lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
 mesh = ExtResource( 6 )
 skeleton = NodePath("..")
-material/0 = SubResource( 6 )
+material/0 = SubResource( 3 )
 _sections_unfolded = [ "material" ]
 
 [node name="Platform" type="RigidBody" parent="Spatial"]
 
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51162, -10 )
 input_ray_pickable = true
 input_capture_on_drag = false
@@ -232,7 +282,7 @@ _sections_unfolded = [ "material" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="Spatial/Platform"]
 
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 disabled = false
 
 [node name="HingeJoint" type="HingeJoint" parent="Spatial/Platform"]
@@ -256,6 +306,7 @@ _sections_unfolded = [ "angular_limit", "collision", "motor", "nodes", "params",
 [node name="Spawner" type="Node" parent="Spatial"]
 
 pause_mode = 1
+editor/display_folded = true
 script = ExtResource( 9 )
 _sections_unfolded = [ "Pause" ]
 Box = ExtResource( 10 )
@@ -269,10 +320,96 @@ one_shot = false
 autostart = true
 _sections_unfolded = [ "Pause" ]
 
+[node name="Overlay" type="Control" parent="."]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Visibility" ]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Overlay"]
+
+anchor_left = 0.01
+anchor_top = 0.01
+anchor_right = 1.0
+anchor_bottom = 0.01
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+_sections_unfolded = [ "Anchor" ]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Overlay/VBoxContainer"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1013.0
+margin_bottom = 80.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+_sections_unfolded = [ "Margin" ]
+
+[node name="Label2" type="Label" parent="Overlay/VBoxContainer/HBoxContainer"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 175.0
+margin_bottom = 80.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 6 )
+text = "Score:"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="Label" type="Label" parent="Overlay/VBoxContainer/HBoxContainer"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 179.0
+margin_right = 217.0
+margin_bottom = 80.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 5 )
+text = "0"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+script = ExtResource( 12 )
+_sections_unfolded = [ "custom_fonts" ]
+
 [node name="Menu" type="Control" parent="."]
 
 pause_mode = 2
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -286,11 +423,14 @@ _sections_unfolded = [ "Pause", "Visibility" ]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Menu"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = -3.0
+margin_right = 4.0
+margin_bottom = -3.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -306,44 +446,23 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 469.0
-margin_top = 260.0
-margin_right = 554.0
-margin_bottom = 280.0
+margin_left = 377.0
+margin_top = 229.0
+margin_right = 647.0
+margin_bottom = 315.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
 size_flags_horizontal = 4
 size_flags_vertical = 0
+theme = SubResource( 11 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "Start Server"
-flat = false
+text = "Continue"
+flat = true
 _sections_unfolded = [ "Theme", "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]
-
-[node name="Button2" type="Button" parent="Menu/VBoxContainer"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 480.0
-margin_top = 290.0
-margin_right = 544.0
-margin_bottom = 310.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-size_flags_horizontal = 4
-size_flags_vertical = 0
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-text = "Connect"
-flat = false
 
 [node name="Button3" type="Button" parent="Menu/VBoxContainer"]
 
@@ -351,37 +470,40 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 471.0
-margin_top = 320.0
-margin_right = 553.0
-margin_bottom = 340.0
+margin_left = 427.0
+margin_top = 325.0
+margin_right = 596.0
+margin_bottom = 371.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
 size_flags_horizontal = 4
 size_flags_vertical = 0
+custom_fonts/font = SubResource( 8 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
 text = "Quit Game"
-flat = false
+flat = true
+_sections_unfolded = [ "custom_fonts" ]
 
 [node name="Crosshair" type="Node2D" parent="."]
 
 pause_mode = 2
 editor/display_folded = true
-script = ExtResource( 11 )
+script = ExtResource( 13 )
 _sections_unfolded = [ "Pause", "Transform" ]
 
 [node name="sprite" type="Sprite" parent="Crosshair"]
 
 scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 12 )
+texture = ExtResource( 14 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="GameOverMenu" type="Control" parent="."]
 
+editor/display_folded = true
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
@@ -400,7 +522,7 @@ editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.96
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -408,7 +530,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 custom_constants/separation = 10
 alignment = 2
-_sections_unfolded = [ "custom_constants" ]
+_sections_unfolded = [ "Anchor", "custom_constants" ]
 
 [node name="RestartButton" type="Button" parent="GameOverMenu/VBoxContainer2"]
 
@@ -416,21 +538,22 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 483.0
-margin_top = 550.0
-margin_right = 540.0
-margin_bottom = 570.0
+margin_left = 453.0
+margin_top = 474.0
+margin_right = 570.0
+margin_bottom = 520.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
 size_flags_horizontal = 4
 size_flags_vertical = 0
+custom_fonts/font = SubResource( 9 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
 text = "Restart"
-flat = false
+flat = true
 _sections_unfolded = [ "Theme", "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]
 
 [node name="GO-QuitButton" type="Button" parent="GameOverMenu/VBoxContainer2"]
@@ -439,30 +562,36 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 471.0
-margin_top = 580.0
-margin_right = 553.0
-margin_bottom = 600.0
+margin_left = 427.0
+margin_top = 530.0
+margin_right = 596.0
+margin_bottom = 576.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
 size_flags_horizontal = 4
 size_flags_vertical = 0
+custom_fonts/font = SubResource( 10 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
 text = "Quit Game"
-flat = false
+flat = true
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="Network" type="Node" parent="."]
+
+script = ExtResource( 15 )
 
 [connection signal="timeout" from="Spatial/Spawner/Timer" to="Spatial/Spawner" method="spawn_obstacle"]
 
 [connection signal="button_down" from="Menu/VBoxContainer/Button" to="." method="_on_Button_button_down"]
 
-[connection signal="button_down" from="Menu/VBoxContainer/Button2" to="." method="_on_Button2_button_down"]
-
 [connection signal="pressed" from="Menu/VBoxContainer/Button3" to="." method="_on_Button3_pressed"]
 
 [connection signal="pressed" from="GameOverMenu/VBoxContainer2/RestartButton" to="." method="_on_RestartButton_pressed"]
+
+[connection signal="pressed" from="GameOverMenu/VBoxContainer2/GO-QuitButton" to="." method="_on_GOQuitButton_pressed"]
 
 
