@@ -16,6 +16,10 @@ mode = 1
 
 disabled = true
 
+[node name="Cannon" parent="Spatial"]
+
+script = null
+
 [node name="Pivot" parent="Spatial"]
 
 visible = false
