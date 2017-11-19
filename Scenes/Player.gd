@@ -11,6 +11,11 @@ var velocity = Vector2(0, 0)
 var grounded = false
 var deathEffect = Environment
 var cycle = 0
+var mesh
+var shape
+var crunch = 0
+var crunch_cooldown = false
+var timer
 
 func _ready():
 	# Called every time the node is added to the scene.
@@ -18,6 +23,9 @@ func _ready():
 	global.isDead = false
 	get_parent().get_node("GameOverMenu").visible = false
 	set_axis_lock(3)
+	mesh = get_node("MeshInstance")
+	shape = get_node("CollisionShape")
+	timer = get_node("Timer")
 	global.score = 0
 	set_process(true)
 
@@ -68,6 +76,16 @@ func _handle_collisions():
 	#print("Get collision events for player")
 	for i in collisions:
 		if i.is_in_group("hazard"):
-			print("Box hit player!")
-			get_node("MeshInstance").transform.scaled(Vector3(0.4, 0.2, 0.4))
-			pass
+			if crunch < 18:
+				if !crunch_cooldown:
+					print("c r u n c h")
+					mesh.set_scale(Vector3(mesh.get_scale().x, mesh.get_scale().y - 0.02, mesh.get_scale().z))
+					shape.set_scale(Vector3(shape.get_scale().x, shape.get_scale().y - 0.02, shape.get_scale().z))
+					crunch += 1
+					crunch_cooldown = true
+					timer.start()
+			else:
+				global.isDead = true
+
+func enable_crunch():
+	crunch_cooldown = false

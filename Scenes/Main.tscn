@@ -194,9 +194,15 @@ shape = SubResource( 1 )
 disabled = false
 _sections_unfolded = [ "Pause", "Transform", "Visibility" ]
 
-[node name="Spatial" type="Spatial" parent="."]
+[node name="Timer" type="Timer" parent="Player"]
 
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
 _sections_unfolded = [ "Pause" ]
+
+[node name="Spatial" type="Spatial" parent="."]
 
 [node name="Cannon" parent="Spatial" instance=ExtResource( 4 )]
 
@@ -320,19 +326,9 @@ _sections_unfolded = [ "angular_limit", "collision", "motor", "nodes", "params",
 [node name="Spawner" type="Node" parent="Spatial"]
 
 pause_mode = 1
-editor/display_folded = true
 script = ExtResource( 9 )
 _sections_unfolded = [ "Pause" ]
 Box = ExtResource( 10 )
-
-[node name="Timer" type="Timer" parent="Spatial/Spawner"]
-
-pause_mode = 1
-process_mode = 1
-wait_time = 2.0
-one_shot = false
-autostart = true
-_sections_unfolded = [ "Pause" ]
 
 [node name="Overlay" type="Control" parent="."]
 
@@ -731,7 +727,7 @@ attenuation_filter_cutoff_hz = 5000.0
 attenuation_filter_db = -24.0
 doppler_tracking = 0
 
-[connection signal="timeout" from="Spatial/Spawner/Timer" to="Spatial/Spawner" method="spawn_obstacle"]
+[connection signal="timeout" from="Player/Timer" to="Player" method="enable_crunch"]
 
 [connection signal="pressed" from="Menu/VBoxContainer/PauseQuitbutton" to="." method="_on_PauseQuitbutton_pressed"]
 
