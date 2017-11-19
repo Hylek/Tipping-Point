@@ -18,6 +18,7 @@ func _ready():
 	global.isDead = false
 	get_parent().get_node("GameOverMenu").visible = false
 	set_axis_lock(3)
+	global.score = 0
 	set_process(true)
 
 func _process(delta):
@@ -58,6 +59,9 @@ func _handle_game_over():
 	get_parent().get_node("Spatial/Spawner").isSpawning = false
 	get_parent().get_node("GameOverMenu").visible = true
 	get_parent().get_node("Crosshair").visible = false
+	
+	if global.score >= global.highscore:
+		global.highscore = global.score
 	
 func _handle_collisions():
 	var collisions = get_colliding_bodies()

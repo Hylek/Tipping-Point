@@ -34,11 +34,6 @@ func _handle_menu():
 			get_tree().set_pause(false)
 			global.paused = false
 
-func _on_Button_button_down():
-		menu.visible = false
-		get_tree().set_pause(false)
-		global.paused = false
-		isMenuVisible = !isMenuVisible
 	
 func _create_server():
 	var host = NetworkedMultiplayerENet.new()
@@ -60,13 +55,19 @@ func _connect_client():
 func _peer_connected(id):
 	if(!get_tree().is_network_server()):
 		return
-		
-
-func _on_Button3_pressed():
-	get_tree().quit()
 
 func _on_RestartButton_pressed():
 	get_tree().change_scene("res://Scenes/Main.tscn")
+
+func _on_ContButton_pressed():
+	menu.visible = false
+	get_tree().set_pause(false)
+	global.paused = false
+	isMenuVisible = !isMenuVisible
+
+func _on_PauseQuitbutton_pressed():
+	print("Pressed Button")
+
 
 func _on_GOQuitButton_pressed():
 	get_tree().quit()

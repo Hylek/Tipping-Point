@@ -15,7 +15,3 @@ func _on_StartServerButton_pressed():
 
 func _on_ConnectButton_pressed():
 	pass # replace with function body
-
-func _on_GOQuitButton_pressed():
-	get_tree().quit()
-	pass # replace with function body
