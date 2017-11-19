@@ -7,14 +7,17 @@
 
 script = null
 
-[node name="Player" parent="Spatial"]
+[node name="Player" parent="."]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.38225, -10 )
 visible = false
+mode = 1
+
+[node name="CollisionShape" parent="Player"]
+
+disabled = true
 
 [node name="Pivot" parent="Spatial"]
 
-editor/display_folded = false
 visible = false
 
 [node name="CollisionShape" parent="Spatial/Pivot"]
@@ -23,22 +26,28 @@ disabled = true
 
 [node name="Platform" parent="Spatial"]
 
-editor/display_folded = false
 visible = false
 
 [node name="CollisionShape" parent="Spatial/Platform"]
 
 disabled = true
 
-[node name="Menu" parent="."]
+[node name="Spawner" parent="Spatial"]
 
 editor/display_folded = true
+
+[node name="Menu" parent="."]
+
 visible = false
 
 [node name="Crosshair" parent="."]
 
 visible = false
 script = null
+
+[node name="GameOverMenu" parent="."]
+
+editor/display_folded = true
 
 [node name="MainMenu" type="VBoxContainer" parent="."]
 
