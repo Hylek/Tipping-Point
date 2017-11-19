@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scenes/Main.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Player.gd" type="Script" id=2]
 [ext_resource path="res://playercube.obj" type="ArrayMesh" id=3]
+<<<<<<< refs/remotes/origin/Yizaksbranchdonotsteal
 [ext_resource path="res://cylinder.obj" type="ArrayMesh" id=4]
 [ext_resource path="res://Scenes/Platform.gd" type="Script" id=5]
 [ext_resource path="res://defaultCube.obj" type="ArrayMesh" id=6]
@@ -112,6 +113,17 @@ adjustment_brightness = 1.0
 adjustment_contrast = 1.0
 adjustment_saturation = 2.0
 _sections_unfolded = [ "Adjustments", "Auto Exposure", "Glow", "SS Reflections", "SSAO" ]
+=======
+[ext_resource path="res://Scenes/Cannon.tscn" type="PackedScene" id=4]
+[ext_resource path="res://default_env.tres" type="Environment" id=5]
+[ext_resource path="res://cylinder.obj" type="ArrayMesh" id=6]
+[ext_resource path="res://Scenes/Platform.gd" type="Script" id=7]
+[ext_resource path="res://defaultCube.obj" type="ArrayMesh" id=8]
+[ext_resource path="res://Scenes/Spawner.gd" type="Script" id=9]
+[ext_resource path="res://Scenes/Box.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/Crosshair.gd" type="Script" id=11]
+[ext_resource path="res://Sprites/crosshair.png" type="Texture" id=12]
+>>>>>>> Game Over state now triggers and functions correctly
 
 [sub_resource type="BoxShape" id=3]
 
@@ -129,10 +141,11 @@ extents = Vector3( 5.94553, 0.208362, 2.27677 )
 [node name="WorldEnvironment" type="WorldEnvironment"]
 
 pause_mode = 2
-environment = SubResource( 2 )
+environment = null
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause" ]
 
+<<<<<<< refs/remotes/origin/Yizaksbranchdonotsteal
 [node name="Spatial" type="Spatial" parent="."]
 
 [node name="Camera" type="Camera" parent="Spatial"]
@@ -153,6 +166,11 @@ doppler/tracking = 0
 [node name="Player" type="RigidBody" parent="Spatial"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.77871, -10 )
+=======
+[node name="Player" type="RigidBody" parent="."]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -10 )
+>>>>>>> Game Over state now triggers and functions correctly
 input_ray_pickable = true
 input_capture_on_drag = false
 collision_layer = 1
@@ -176,7 +194,7 @@ angular_damp = -1.0
 script = ExtResource( 2 )
 _sections_unfolded = [ "Angular", "Collision", "Linear", "Transform", "Visibility" ]
 
-[node name="MeshInstance" type="MeshInstance" parent="Spatial/Player"]
+[node name="MeshInstance" type="MeshInstance" parent="Player"]
 
 transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0 )
 layers = 1
@@ -193,12 +211,31 @@ skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "Geometry", "LOD", "Transform", "material" ]
 
-[node name="CollisionShape" type="CollisionShape" parent="Spatial/Player"]
+[node name="CollisionShape" type="CollisionShape" parent="Player"]
 
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
 shape = SubResource( 3 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
+
+[node name="Spatial" type="Spatial" parent="."]
+
+[node name="Cannon" parent="Spatial" instance=ExtResource( 4 )]
+
+[node name="Camera" type="Camera" parent="Spatial"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.46604, -0.658533 )
+projection = 0
+fov = 65.0
+near = 0.1
+far = 100.0
+keep_aspect = 1
+current = false
+cull_mask = 1048575
+environment = ExtResource( 5 )
+h_offset = 0.0
+v_offset = 0.0
+doppler/tracking = 0
 
 [node name="Pivot" type="StaticBody" parent="Spatial"]
 
@@ -231,7 +268,11 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
+<<<<<<< refs/remotes/origin/Yizaksbranchdonotsteal
 mesh = ExtResource( 4 )
+=======
+mesh = ExtResource( 6 )
+>>>>>>> Game Over state now triggers and functions correctly
 skeleton = NodePath("..")
 material/0 = null
 
@@ -259,7 +300,11 @@ linear_velocity = Vector3( 0, 0, 0 )
 linear_damp = -1.0
 angular_velocity = Vector3( 0, 0, 0 )
 angular_damp = -1.0
+<<<<<<< refs/remotes/origin/Yizaksbranchdonotsteal
 script = ExtResource( 5 )
+=======
+script = ExtResource( 7 )
+>>>>>>> Game Over state now triggers and functions correctly
 _sections_unfolded = [ "Angular", "Linear", "Transform" ]
 
 [node name="MeshInstance" type="MeshInstance" parent="Spatial/Platform"]
@@ -274,7 +319,11 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
+<<<<<<< refs/remotes/origin/Yizaksbranchdonotsteal
 mesh = ExtResource( 6 )
+=======
+mesh = ExtResource( 8 )
+>>>>>>> Game Over state now triggers and functions correctly
 skeleton = NodePath("..")
 material/0 = null
 
@@ -304,9 +353,15 @@ _sections_unfolded = [ "angular_limit", "collision", "motor", "nodes", "params",
 [node name="Spawner" type="Node" parent="Spatial"]
 
 pause_mode = 1
+<<<<<<< refs/remotes/origin/Yizaksbranchdonotsteal
 script = ExtResource( 7 )
 _sections_unfolded = [ "Pause" ]
 Box = ExtResource( 8 )
+=======
+script = ExtResource( 9 )
+_sections_unfolded = [ "Pause" ]
+Box = ExtResource( 10 )
+>>>>>>> Game Over state now triggers and functions correctly
 
 [node name="Timer" type="Timer" parent="Spatial/Spawner"]
 
@@ -336,6 +391,7 @@ _sections_unfolded = [ "Pause", "Visibility" ]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Menu"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -420,14 +476,89 @@ flat = false
 
 pause_mode = 2
 editor/display_folded = true
-script = ExtResource( 10 )
+script = ExtResource( 11 )
 _sections_unfolded = [ "Pause", "Transform" ]
 
 [node name="sprite" type="Sprite" parent="Crosshair"]
 
 scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 11 )
+texture = ExtResource( 12 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="GameOverMenu" type="Control" parent="."]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Visibility" ]
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="GameOverMenu"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_constants/separation = 10
+alignment = 2
+_sections_unfolded = [ "custom_constants" ]
+
+[node name="RestartButton" type="Button" parent="GameOverMenu/VBoxContainer2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 483.0
+margin_top = 550.0
+margin_right = 540.0
+margin_bottom = 570.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Restart"
+flat = false
+_sections_unfolded = [ "Theme", "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]
+
+[node name="GO-QuitButton" type="Button" parent="GameOverMenu/VBoxContainer2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 471.0
+margin_top = 580.0
+margin_right = 553.0
+margin_bottom = 600.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Quit Game"
+flat = false
 
 [connection signal="timeout" from="Spatial/Spawner/Timer" to="Spatial/Spawner" method="spawn_obstacle"]
 
@@ -436,5 +567,7 @@ _sections_unfolded = [ "Transform" ]
 [connection signal="button_down" from="Menu/VBoxContainer/Button2" to="." method="_on_Button2_button_down"]
 
 [connection signal="pressed" from="Menu/VBoxContainer/Button3" to="." method="_on_Button3_pressed"]
+
+[connection signal="pressed" from="GameOverMenu/VBoxContainer2/RestartButton" to="." method="_on_RestartButton_pressed"]
 
 

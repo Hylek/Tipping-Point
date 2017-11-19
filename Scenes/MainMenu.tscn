@@ -7,16 +7,21 @@
 
 script = null
 
-[node name="Player" parent="Spatial"]
+[node name="Player" parent="."]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.38225, -10 )
 visible = false
 mode = 1
+<<<<<<< refs/remotes/origin/Yizaksbranchdonotsteal
 script = null
+=======
+
+[node name="CollisionShape" parent="Player"]
+
+disabled = true
+>>>>>>> Game Over state now triggers and functions correctly
 
 [node name="Pivot" parent="Spatial"]
 
-editor/display_folded = false
 visible = false
 
 [node name="CollisionShape" parent="Spatial/Pivot"]
@@ -25,21 +30,31 @@ disabled = true
 
 [node name="Platform" parent="Spatial"]
 
-editor/display_folded = false
 visible = false
 
 [node name="CollisionShape" parent="Spatial/Platform"]
 
 disabled = true
 
+[node name="Spawner" parent="Spatial"]
+
+<<<<<<< refs/remotes/origin/Yizaksbranchdonotsteal
+=======
+editor/display_folded = true
+
 [node name="Menu" parent="."]
 
+>>>>>>> Game Over state now triggers and functions correctly
 visible = false
 
 [node name="Crosshair" parent="."]
 
 visible = false
 script = null
+
+[node name="GameOverMenu" parent="."]
+
+editor/display_folded = true
 
 [node name="MainMenu" type="VBoxContainer" parent="."]
 

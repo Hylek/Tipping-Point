@@ -10,11 +10,12 @@ var postest = Vector3(1,1,0)
 var input_direction = 0
 var velocity = Vector2(0, 0)
 var grounded = false
-var score = 0
 
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
+	isDead = false
+	get_parent().get_node("GameOverMenu").visible = false
 	set_axis_lock(3)
 	set_process(true)
 
@@ -25,7 +26,14 @@ func _process(delta):
 		impulse = Vector3(1, 0, 0)
 	else:
 		impulse = Vector3(0,0,0)
-		
 	apply_impulse(postest, impulse)
-	score += 1
-	#print(global.score)
+	
+	
+	
+	
+	
+	
+#	# Called every frame. Delta is time since last frame.
+#	# Update game logic here.
+#	pass
+	
