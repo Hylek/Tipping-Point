@@ -79,7 +79,7 @@ distance_fade_enable = false
 
 extents = Vector3( 5.94553, 0.208362, 2.27677 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=5]
 
 size = 64
 use_mipmaps = false
@@ -87,7 +87,7 @@ use_filter = false
 font_data = ExtResource( 11 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=6]
 
 size = 64
 use_mipmaps = false
@@ -95,7 +95,7 @@ use_filter = false
 font_data = ExtResource( 11 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
-[sub_resource type="Theme" id=11]
+[sub_resource type="Theme" id=7]
 
 
 [sub_resource type="DynamicFont" id=8]
@@ -143,8 +143,8 @@ bounce = 0.2
 gravity_scale = 1.0
 custom_integrator = false
 continuous_cd = false
-contacts_reported = 0
-contact_monitor = false
+contacts_reported = 1
+contact_monitor = true
 sleeping = false
 can_sleep = true
 axis_lock = 0
@@ -376,7 +376,7 @@ rect_clip_content = false
 mouse_filter = 2
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 5 )
 text = "Score:"
 percent_visible = 1.0
 lines_skipped = 0
@@ -397,7 +397,7 @@ rect_clip_content = false
 mouse_filter = 2
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "0"
 align = 1
 valign = 1
@@ -446,16 +446,16 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 377.0
-margin_top = 229.0
-margin_right = 647.0
-margin_bottom = 315.0
+margin_left = 477.0
+margin_top = 262.0
+margin_right = 546.0
+margin_bottom = 282.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
 size_flags_horizontal = 4
 size_flags_vertical = 0
-theme = SubResource( 11 )
+theme = SubResource( 7 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -471,9 +471,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 427.0
-margin_top = 325.0
+margin_top = 292.0
 margin_right = 596.0
-margin_bottom = 371.0
+margin_bottom = 338.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0

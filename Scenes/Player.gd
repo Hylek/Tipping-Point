@@ -10,6 +10,7 @@ var input_direction = 0
 var velocity = Vector2(0, 0)
 var grounded = false
 var deathEffect = Environment
+var cycle = 0
 
 func _ready():
 	# Called every time the node is added to the scene.
@@ -22,8 +23,18 @@ func _ready():
 func _process(delta):
 	if Input.is_action_pressed("ui_left"):
 		impulse = Vector3(-1, 0, 0)
+		if cycle > 4:
+			global.score += 1
+			cycle = 0
+		else:
+			cycle += 1
 	elif Input.is_action_pressed("ui_right"):
 		impulse = Vector3(1, 0, 0)
+		if cycle > 10:
+			global.score += 1
+			cycle = 0
+		else:
+			cycle += 1
 	else:
 		impulse = Vector3(0,0,0)
 	apply_impulse(postest, impulse)
@@ -32,12 +43,16 @@ func _process(delta):
 	if(pos.y <= -2):
 		_handle_game_over()
 	
-	if !global.isDead && !global.paused:
-		global.score += 1
+	if cycle > 8:
+		if !global.isDead && !global.paused:
+			global.score += 1
+		cycle = 0
+	else:
+		cycle += 1
 		
-	#if get_colliding_bodies().size():
-		#_handle_collisions()
-		
+	if get_colliding_bodies().size():
+		_handle_collisions()
+
 func _handle_game_over():
 	global.isDead = true
 	get_parent().get_node("Spatial/Spawner").isSpawning = false
@@ -49,6 +64,6 @@ func _handle_collisions():
 	#print("Get collision events for player")
 	for i in collisions:
 		if i.is_in_group("hazard"):
-			#print("Box hit player!")
-			#get_node("MeshInstance").transform.scaled(Vector3(0.4, 0.2, 0.4))
+			print("Box hit player!")
+			get_node("MeshInstance").transform.scaled(Vector3(0.4, 0.2, 0.4))
 			pass

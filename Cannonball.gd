@@ -26,7 +26,7 @@ func _process(delta):
 
 func handle_collision():
 	var colliders = get_colliding_bodies()
-	print("handling collision events")
+	#print("handling collision events")
 	for i in colliders:
 		if i.is_in_group("hazard"):
 			print("hit a box!")
