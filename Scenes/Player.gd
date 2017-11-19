@@ -10,6 +10,7 @@ var postest = Vector3(1,1,0)
 var input_direction = 0
 var velocity = Vector2(0, 0)
 var grounded = false
+var score = 0
 
 func _ready():
 	# Called every time the node is added to the scene.
@@ -26,13 +27,5 @@ func _process(delta):
 		impulse = Vector3(0,0,0)
 		
 	apply_impulse(postest, impulse)
-	
-	
-	
-	
-	
-	
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
-	
+	score += 1
+	#print(global.score)

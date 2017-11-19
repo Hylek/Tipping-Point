@@ -7,14 +7,12 @@
 
 script = null
 
-[node name="Spatial" parent="."]
-
-editor/display_folded = true
-
 [node name="Player" parent="Spatial"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.38225, -10 )
 visible = false
+mode = 1
+script = null
 
 [node name="Pivot" parent="Spatial"]
 

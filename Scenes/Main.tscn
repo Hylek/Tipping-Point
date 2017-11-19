@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scenes/Main.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Player.gd" type="Script" id=2]
@@ -8,8 +8,9 @@
 [ext_resource path="res://defaultCube.obj" type="ArrayMesh" id=6]
 [ext_resource path="res://Scenes/Spawner.gd" type="Script" id=7]
 [ext_resource path="res://Scenes/Box.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Scenes/Crosshair.gd" type="Script" id=9]
-[ext_resource path="res://Sprites/crosshair.png" type="Texture" id=10]
+[ext_resource path="res://Scenes/Cannon.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Crosshair.gd" type="Script" id=10]
+[ext_resource path="res://Sprites/crosshair.png" type="Texture" id=11]
 
 [sub_resource type="ProceduralSky" id=1]
 
@@ -110,7 +111,7 @@ adjustment_enabled = true
 adjustment_brightness = 1.0
 adjustment_contrast = 1.0
 adjustment_saturation = 2.0
-_sections_unfolded = [ "Auto Exposure", "Glow", "SS Reflections", "SSAO" ]
+_sections_unfolded = [ "Adjustments", "Auto Exposure", "Glow", "SS Reflections", "SSAO" ]
 
 [sub_resource type="BoxShape" id=3]
 
@@ -151,7 +152,6 @@ doppler/tracking = 0
 
 [node name="Player" type="RigidBody" parent="Spatial"]
 
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.77871, -10 )
 input_ray_pickable = true
 input_capture_on_drag = false
@@ -317,6 +317,8 @@ one_shot = false
 autostart = true
 _sections_unfolded = [ "Pause" ]
 
+[node name="Cannon" parent="Spatial" instance=ExtResource( 9 )]
+
 [node name="Menu" type="Control" parent="."]
 
 pause_mode = 2
@@ -418,13 +420,13 @@ flat = false
 
 pause_mode = 2
 editor/display_folded = true
-script = ExtResource( 9 )
+script = ExtResource( 10 )
 _sections_unfolded = [ "Pause", "Transform" ]
 
 [node name="sprite" type="Sprite" parent="Crosshair"]
 
 scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 _sections_unfolded = [ "Transform" ]
 
 [connection signal="timeout" from="Spatial/Spawner/Timer" to="Spatial/Spawner" method="spawn_obstacle"]
