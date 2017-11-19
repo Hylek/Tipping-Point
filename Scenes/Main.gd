@@ -57,7 +57,10 @@ func _peer_connected(id):
 		return
 
 func _on_RestartButton_pressed():
-	get_tree().change_scene("res://Scenes/Main.tscn")
+	if global.gameMode == 1:
+		get_tree().change_scene("res://Scenes/Main.tscn")
+	elif global.gameMode == 2:
+		get_tree().change_scene("res://Scenes/SlipnSlide.tscn")
 
 func _on_ContButton_pressed():
 	menu.visible = false
@@ -70,4 +73,4 @@ func _on_PauseQuitbutton_pressed():
 
 
 func _on_GOQuitButton_pressed():
-	get_tree().quit()
+	get_tree().change_scene("res://Scenes/MainMenu.tscn")
