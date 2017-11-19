@@ -58,8 +58,8 @@ func _process(delta):
 		cycle = 0
 	else:
 		cycle += 1
-		
-	if get_colliding_bodies().size() > 0:
+	
+	if get_colliding_bodies().size():
 		_handle_collisions()
 
 func _handle_game_over():
@@ -76,6 +76,7 @@ func _handle_collisions():
 	#print("Get collision events for player")
 	for i in collisions:
 		if i.is_in_group("hazard"):
+			
 			if crunch < 18:
 				if !crunch_cooldown:
 					print("c r u n c h")
