@@ -1,0 +1,12 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/E.obj-d9bf6b7d461904a3441f98f58559444c.mesh"
+
+[gen]
+files=[ "res://.import/E.obj-d9bf6b7d461904a3441f98f58559444c.mesh" ]
+
+[params]
+
+generate_tangents=true
