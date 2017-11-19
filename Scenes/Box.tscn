@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Box.gd" type="Script" id=1]
 [ext_resource path="res://hollowCube.obj" type="ArrayMesh" id=2]
 [ext_resource path="res://RandomMat.gd" type="Script" id=3]
-[ext_resource path="res://Scenes/BoxMat.gd" type="Script" id=4]
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -104,7 +103,6 @@ lod_max_hysteresis = 0.0
 mesh = ExtResource( 2 )
 skeleton = NodePath("..")
 material/0 = SubResource( 1 )
-script = ExtResource( 4 )
 _sections_unfolded = [ "Geometry", "LOD", "Transform", "material" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="."]

@@ -158,8 +158,8 @@ bounce = 0.2
 gravity_scale = 1.0
 custom_integrator = false
 continuous_cd = false
-contacts_reported = 0
-contact_monitor = false
+contacts_reported = 1
+contact_monitor = true
 sleeping = false
 can_sleep = true
 axis_lock = 0
@@ -203,8 +203,6 @@ autostart = false
 _sections_unfolded = [ "Pause" ]
 
 [node name="Spatial" type="Spatial" parent="."]
-
-editor/display_folded = true
 
 [node name="Cannon" parent="Spatial" instance=ExtResource( 4 )]
 

@@ -1,6 +1,7 @@
 extends Node
 export (PackedScene) var Box
-onready var ref = load (Box.get_path())
+#onready var ref = load (Box.get_path())
+onready var boxRef = load(Box.get_path())
 var box
 var isSpawning
 var timer
@@ -23,14 +24,25 @@ func _ready():
 #	pass
 
 func spawn_obstacle():
-	global.spawn_delay -= 0.02 * (global.spawn_delay/2)
-	timer.set_wait_time(global.spawn_delay)
+	if global.gameMode != 3:
+		global.spawn_delay -= 0.02 * (global.spawn_delay/2)
+		timer.set_wait_time(global.spawn_delay)
 	
-	if(isSpawning):
-		box = ref.instance()
-		get_parent().add_child(box)
-		box.translate(Vector3((randf() * 8) - 4,3,0.5))
-		#var mat = SpatialMaterial
-		#box.get_node("MeshInstance").set_surface_material(1, mat)
+		if(isSpawning):
+			box = boxRef.instance()
+			get_parent().add_child(box)
+			box.translate(Vector3((randf() * 8) - 4,3,0.5))
+			#var mat = SpatialMaterial
+			#box.get_node("MeshInstance").set_surface_material(1, mat)
+	else:
+		global.spawn_delay -= 0.09 * (global.spawn_delay/2)
+		timer.set_wait_time(global.spawn_delay)
+	
+		if(isSpawning):
+			box = boxRef.instance()
+			get_parent().add_child(box)
+			box.translate(Vector3((randf() * 8) - 4,3,0.5))
+			#var mat = SpatialMaterial
+			#box.get_node("MeshInstance").set_surface_material(1, mat)
 	
 	timer.start()

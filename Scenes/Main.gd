@@ -11,7 +11,7 @@ onready var deathCheck = get_node("Spawner")
 func _ready():
 	overlay.visible = true
 	#get_node("Spatial/Player").translate(Vector3(5,1,1))
-	
+	global.spawn_delay = 2
 	set_process(true)
 	pass
 	
@@ -61,6 +61,8 @@ func _on_RestartButton_pressed():
 		get_tree().change_scene("res://Scenes/Main.tscn")
 	elif global.gameMode == 2:
 		get_tree().change_scene("res://Scenes/SlipnSlide.tscn")
+	elif global.gameMode == 3:
+		get_tree().change_scene("res://Scenes/RapidFire.tscn")
 
 func _on_ContButton_pressed():
 	menu.visible = false

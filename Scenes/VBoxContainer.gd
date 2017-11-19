@@ -1,7 +1,7 @@
 extends VBoxContainer
 
 func _ready():
-	
+	global.spawn_delay = 2
 	pass
 
 func _on_StartButton_pressed():
@@ -21,3 +21,8 @@ func _on_ConnectButton_pressed():
 func _on_SlipButton_pressed():
 	get_tree().change_scene("res://Scenes/SlipnSlide.tscn")
 	global.gameMode = 2
+
+
+func _on_RapidButton_pressed():
+	get_tree().change_scene("res://Scenes/RapidFire.tscn")
+	global.gameMode = 3
