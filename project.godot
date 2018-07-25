@@ -12,6 +12,7 @@ config_version=3
 
 config/name="Tipping Point V2"
 run/main_scene="res://Scenes/MainMenu.tscn"
+boot_splash/image="res://Sprites/ytho.png"
 config/icon="res://icon.png"
 
 [rendering]
