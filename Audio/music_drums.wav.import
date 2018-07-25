@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/music_drums.wav-e5f9e7c31d6d8394678e92d9bf39307b.sample"
+
+[deps]
+
+source_file="res://Audio/music_drums.wav"
+dest_files=[ "res://.import/music_drums.wav-e5f9e7c31d6d8394678e92d9bf39307b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

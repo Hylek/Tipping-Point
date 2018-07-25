@@ -4,6 +4,11 @@ importer="texture"
 type="StreamTexture"
 path="res://.import/crosshair.png-1f111c399bc68d951f7bd7a5bc183983.stex"
 
+[deps]
+
+source_file="res://Sprites/crosshair.png"
+dest_files=[ "res://.import/crosshair.png-1f111c399bc68d951f7bd7a5bc183983.stex" ]
+
 [params]
 
 compress/mode=0
