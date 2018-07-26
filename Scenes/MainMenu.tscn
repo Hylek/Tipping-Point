@@ -230,7 +230,7 @@ adjustment_contrast = 1.0
 adjustment_saturation = 2.0
 _sections_unfolded = [ "Adjustments", "Background", "SS Reflections", "SSAO" ]
 
-[node name="Node" type="Node" index="0"]
+[node name="Node" type="Node"]
 
 [node name="HUD" type="CanvasLayer" parent="." index="0"]
 
